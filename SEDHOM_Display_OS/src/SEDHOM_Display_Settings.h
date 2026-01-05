@@ -13,6 +13,7 @@
 // SEDHOMs lib
 #include "SEDHOM_Colors.h"
 #include "SEDHOM_Display_Fonts.h"
+#include "SEDHOM_Arabic_Font.h"
 ////////////////////////////////////////
 #include <Adafruit_GFX.h>   
 #include <SPI.h>

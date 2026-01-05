@@ -37,6 +37,8 @@ class SEDHOM_Icons
         void TEXT(int x,int y,const GFXfont* font,Color_t color,string_t txt);
         void Container(int x,int y,int h,int w,int raduis,Color_t color);
         void fill_rectangle_with_end(int x,int y,int h,int w,int end_volume,Color_t color,Color_t end_color);
+        void Draw_Custom_int_shap(int x,int y,int h,int w,int color,int arr[]);
+        void Draw_Custom_Char(int x,int y,int h,int w,int color,char arr[]);
         // effects 
         Color_t Blur(int x,int y,int h,int w,int r,int Blur_value,Color_t mode,bool circle_or_rectangle = 1);
         // Draw SEDhOM Icons
@@ -180,6 +182,33 @@ void SEDHOM_Icons::fill_rectangle_with_end(int x,int y,int h,int w,int end_volum
     Fill_Rectangle(x,y,h,w,5,end_color);
     Fill_Rectangle(x + end_volume,y + end_volume,h - 2*end_volume,w - 2*end_volume,5,color);
 }
+void SEDHOM_Icons::Draw_Custom_Char(int x,int y,int h,int w,int color,char arr[])
+{
+  for(int i=0; i<h; i++) 
+  {
+    for(int j=0; j<w; j++) 
+    {
+      if(((arr[i]) >> (w-1-j)) & 0x01)
+      {
+        draw_Pixel(x+j, y+i, color); 
+      }
+    }
+  }
+}
+void SEDHOM_Icons::Draw_Custom_int_shap(int x,int y,int h,int w,int color,int arr[])
+{
+      for(int i=0; i<h; i++) 
+  {
+    for(int j=0; j<w; j++) 
+    {
+      if(((arr[i]) >> (w-1-j)) & 0x01)
+      {
+        draw_Pixel(x+j, y+i, color); 
+      }
+    }
+  }
+}
+
 // effects
 Color_t SEDHOM_Icons::Blur(int x,int y,int h,int w,int r,int Blur_value,Color_t mode,bool circle_or_rectangle = 1)
 {
