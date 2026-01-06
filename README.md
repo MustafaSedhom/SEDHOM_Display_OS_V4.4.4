@@ -1,14 +1,15 @@
 # SEDHOM_Display_OS_V4.4.4
 <br>
-is new version of my Library you can youse any tft display and you can install it in arduino ide , platform io or you are embeeded engineer .<br>
-you can see most project i made with this library and arduino uno and tft 3.5 inch sheild as apicture and videos look this link in my Google Drive = https://drive.google.com/drive/folders/16Hg8dgcBH3FalRkK8SDBWj2221bd8Fue?usp=sharing <br>
+is new version of my Library you can use any tft display and you can install it in arduino ide , platform io or you are embeeded engineer .<br>
+you can see most project i made with this library and arduino uno and tft 3.5 inch sheild as apicture and videos look this link in my Google Drive : 
+ <a href "https://drive.google.com/drive/folders/16Hg8dgcBH3FalRkK8SDBWj2221bd8Fue?usp=sharing"> Mustafa SEDHOM Drive </a>  <br>
 
 ======================================================================================================================================================================
 ## about Writer this Library <br>
 ### Eng.Mustafa Sedhom (Embedded Software and Haedware Engineer) .<br>
 <br>
- Gmail : elmohandes24680@gmail.com <br>
- tel : +201144962908<br>
+ Gmail : <a href "elmohandes24680@gmail.com"> Mustafa SEDHOM Gmail </a> <br>
+ Telephone or WhatsApp : <a href "+201144962908"> Mustafa SEDHOM WhatsApp </a> <br>
  
 ======================================================================================================================================================================
 ## why i made this lib ?<br>
@@ -81,7 +82,7 @@ you can see most project i made with this library and arduino uno and tft 3.5 in
 ----- you can open new project and put in top first thing this line #include<SEDHOM_Display_OS.h> and next line SEDHOM_Display_OS   OS; and in setup OS.Init_Screen(Rotate_90_Degree,Night_Mode); and use OS. and show all propirtes in this lib and see last pargraf in this to show all prpertes .<br>
 
 ======================================================================================================================================================================
-## else if you want Embedded Engineer --><br>
+## else if you Embedded Engineer and want use this library --><br>
 
 ---- put this folder betwwen your project and adding this line #include<SEDHOM_Display_OS.h> and next line SEDHOM_Display_OS   OS; and in main before while loop OS.Init_Screen(Rotate_90_Degree,Night_Mode); and you can OS. to show all properites and in SEDHOM_Display_Setting.h all folders i use it and function yhis file is control all my library all files for drawing and gandling touch only .<br>
 
