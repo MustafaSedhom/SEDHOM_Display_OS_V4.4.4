@@ -61,8 +61,9 @@ you can see most project i made with this library and arduino uno and tft 3.5 in
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 -> MCUFreind_kbv  <- or choose any driver do you want and adding some setting in SEDHOM_Display_Settings.h file .<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 -> Adarfruit Touch <- this lib for touch you can use it and edit all setting touch in SEDHOM_Display_Settings.h file .<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 -> Adafruit GFX <- for drawing basic shapes .<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 -> SD <- for use sd card and load images and fonts in tft screen .<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 -> SPI <- this lib embbedded in arduino ide .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 -> QRCodeGFX <- for drawing QRCode icon .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 -> SD <- for use sd card and load images and fonts in tft screen .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6 -> SPI <- this lib embbedded in arduino ide .<br>
 ----- open arduino ide or restart arduino ide and open (file -> Examples -> SEDHOM_Display_OS -> ... ) choose any project and added any thing you want and use lib .<br>
 ----- you can open new project and put in top first thing this line #include<SEDHOM_Display_OS.h> and next line SEDHOM_Display_OS   OS; and in setup OS.Init_Screen(Rotate_90_Degree,Night_Mode); and use OS. and show all proertes in this lib and see last pargraf in this to show all prpertes .<br>
 
