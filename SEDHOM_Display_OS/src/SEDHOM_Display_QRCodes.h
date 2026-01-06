@@ -5,9 +5,10 @@
 #include <QRCodeGFX.h>
 #include "SEDHOM_Display_Settings.h"
 
-extern MCUFRIEND_kbv Display;
+// extern MCUFRIEND_kbv Display;
 
-static QRCodeGFX qrcode(Display);
+// static QRCodeGFX qrcode(Display);
+extern QRCodeGFX qrcode;
 
 #define SEDHOM_QRCode(x,y,size,Background,ForeGround,version,content)  \
                         SEDHOM_QRCode_Settings(Background,ForeGround,size,version);SEDHOM_QRCode_write(x,y,content);

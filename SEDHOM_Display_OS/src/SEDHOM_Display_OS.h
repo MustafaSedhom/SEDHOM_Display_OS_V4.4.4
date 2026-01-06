@@ -2,9 +2,7 @@
 #define SEDHOM_DISPLAY_OS_H_
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // include lib to Draw Basic shapes but i include it in Icons_And_Widgets file
-// #include "SEDHOM_Display_Settings.h"
-// include Qrcode Driver to Draw QRcode too scan it
-#include "SEDHOM_Display_QRCodes.h"
+#include "SEDHOM_Display_Settings.h"
 // include icons file to draw icon and widgets
 #include "SEDHOM_OS_Icons_And_Widgets.h"
 // include touch file
@@ -21,20 +19,23 @@
 class SEDHOM_Display_OS
 {
   public:
-     SEDHOM_SD_Card SD_Card;
-     SEDHOM_Icons Icon;
-     SEDHOM_Touch Touch;
-     SEDHOM_Handlig_Pages handle_page;
-    #define STACK_DATA_TYPE int
-    //  Stack Stack(20);
-     void Init_Screen(ROTATION_STASTUS_t Rotate,Color_t Mode);
-     void Set_Device_Mode(Color_t Mode);
-     int Screen_Height();
-     int Screen_Width();
-     Color_t Mode();
-     Color_t Not_Mode();
-     void Fill_Screen(Color_t color);
+  SEDHOM_SD_Card SD_Card;
+  SEDHOM_Icons Icon;
+  SEDHOM_Touch Touch;
+  SEDHOM_Handlig_Pages handle_page;
+  // #define STACK_DATA_TYPE int // -> defualt
+  Stack Stack;
+  // #define Queue_DATA_TYPE int // -> defualt
+  Queue queue;
+  void Init_Screen(ROTATION_STASTUS_t Rotate,Color_t Mode);
+  void Set_Device_Mode(Color_t Mode);
+  int Screen_Height();
+  int Screen_Width();
+  Color_t Mode();
+  Color_t Not_Mode();
+  void Fill_Screen(Color_t color);
 };
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // define all functions
 void SEDHOM_Display_OS::Init_Screen(ROTATION_STASTUS_t Rotate,Color_t Mode)
 {

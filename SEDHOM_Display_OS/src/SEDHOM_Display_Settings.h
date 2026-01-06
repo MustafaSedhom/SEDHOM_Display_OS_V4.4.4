@@ -10,10 +10,6 @@
 //*************************************************************************************************
 // include you lib driver here for TFT display
 //*************************************************************************************************
-// SEDHOMs lib
-#include "SEDHOM_Colors.h"
-#include "SEDHOM_Display_Fonts.h"
-#include "SEDHOM_Arabic_Font.h"
 ////////////////////////////////////////
 #include <Adafruit_GFX.h>   
 #include <SPI.h>
@@ -24,6 +20,13 @@
 // #include <Adafruit_TFTLCD.h>      
 ///////////////////////////////////////
 #include <TouchScreen.h>
+//////////////////////////////////////
+#include <QRCodeGFX.h>
+//////////////////////////////////////
+// SEDHOMs lib
+#include "SEDHOM_Colors.h"
+#include "SEDHOM_Display_Fonts.h"
+#include "SEDHOM_Arabic_Font.h"
 //============================================================================================================================================
 //*************************************************************************************************
 // define your object for you Display here but you should name Display Like a do  
@@ -37,6 +40,9 @@ MCUFRIEND_kbv Display;
 // #define LCD_RESET A4 // Can alternately just connect to Arduino's reset pin
 // static Adafruit_TFTLCD Display(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 ///////////////////////////////////////////////////
+// for Qrcode lib
+QRCodeGFX qrcode(Display);
+//////////////////////////////////////////////////
 // for touch
 #define YP A1  // must be an analog pin, use "An" notation!
 #define XM A2  // must be an analog pin, use "An" notation!
@@ -60,7 +66,7 @@ MCUFRIEND_kbv Display;
 //*************************************************************************************************
 // set Rotation of screen
 //*************************************************************************************************
-#define Rotate_screeen(x_)                                Display.setRotation(x_); 
+#define Rotate_screeen(x_)                                    Display.setRotation(x_); 
 //============================================================================================================================================
 //*************************************************************************************************
 // define screen width and height (per pixels) like width = 320 && Height = 480
@@ -73,17 +79,17 @@ MCUFRIEND_kbv Display;
 //*************************************************************************************************
 #define Fill_Rectangle(x_,y_,h_,w_,r_,color_)                  Display.fillRoundRect(x_,y_,h_,w_,r_,color_);
 #define Draw_Rectangle(x_,y_,h_,w_,r_,color_)                  Display.drawRoundRect(x_,y_,h_,w_,r_,color_);
-#define Fill_Circle(x_,y_,r_,color_)                         Display.fillCircle(x_,y_,r_,color_);
-#define Draw_Circle(x_,y_,r_,color_)                         Display.drawCircle(x_,y_,r_,color_);
-#define Fill_Triangle(x0_,y0_,x1_,y1_,x2_,y2_,color_)           Display.fillTriangle(x0_,y0_,x1_,y1_,x2_,y2_,color_);
-#define Draw_Triangle(x0_,y0_,x1_,y1_,x2_,y2_,color_)           Display.drawTriangle(x0_,y0_,x1_,y1_,x2_,y2_,color_);
-#define Draw_Line(x0_,y0_,x1_,y1_,color_)                     Display.drawLine(x0_,y0_,x1_,y1_,color_);
-#define Draw_Pixel(x_,y_,color_)                          Display.drawPixel(x_,y_,color_);
+#define Fill_Circle(x_,y_,r_,color_)                           Display.fillCircle(x_,y_,r_,color_);
+#define Draw_Circle(x_,y_,r_,color_)                           Display.drawCircle(x_,y_,r_,color_);
+#define Fill_Triangle(x0_,y0_,x1_,y1_,x2_,y2_,color_)          Display.fillTriangle(x0_,y0_,x1_,y1_,x2_,y2_,color_);
+#define Draw_Triangle(x0_,y0_,x1_,y1_,x2_,y2_,color_)          Display.drawTriangle(x0_,y0_,x1_,y1_,x2_,y2_,color_);
+#define Draw_Line(x0_,y0_,x1_,y1_,color_)                      Display.drawLine(x0_,y0_,x1_,y1_,color_);
+#define Draw_Pixel(x_,y_,color_)                               Display.drawPixel(x_,y_,color_);
 //============================================================================================================================================
 //*************************************************************************************************
 // define draw picture to display it on tft     
 //*************************************************************************************************
-#define Draw_RGB_Picture(x_,y_,h_,w_,pictur_array_)                       Display.drawRGBBitmap(x_, y_, pictur_array_, w_, h_);
+#define Draw_RGB_Picture(x_,y_,h_,w_,pictur_array_)                        Display.drawRGBBitmap(x_, y_, pictur_array_, w_, h_);
 #define Draw_Single_Color_Picture(x_,y_,h_,w_,color_,pictur_array_)        Display.drawBitmap(x_, y_, pictur_array_, w_, h_, color_);
 //============================================================================================================================================
 //*************************************************************************************************
@@ -91,19 +97,19 @@ MCUFRIEND_kbv Display;
 //*************************************************************************************************
 #define Text_Normal(x_,y_,size_,color_,txt_)     Display.setCursor(x_,y_);Display.setTextSize(size_);Display.setTextColor(color_);Display.print(txt_);
 #define Text(x_,y_,font_,color_,txt_)            Display.setCursor(x_,y_);Display.setFont(font_);Display.setTextColor(color_);Display.print(txt_);
-#define Text_Add(str_)                      Display.print(str_);
+#define Text_Add(str_)                           Display.print(str_);
 // #define Text(x,y,font,color,txt)         Display.setCursor(x,y);Display.setFont(font);Display.setTextColor(color);Display.write(txt);
 // #define Text(x,y,size,color,txt)         Display.setTextColor(color);Display.print(txt,x,y);
 //============================================================================================================================================
 //*************************************************************************************************
 // fill all screen with color
 //*************************************************************************************************
-#define FillScreen(color_)                   Display.fillScreen(color_);
+#define FillScreen(color_)                       Display.fillScreen(color_);
 //============================================================================================================================================
 //*************************************************************************************************
 // set Display Color 
 //*************************************************************************************************
-#define Set_Color(r_,g_,b_)                    Display.color565(r_,g_,b_)
+#define Set_Color(r_,g_,b_)                      Display.color565(r_,g_,b_)
 //*************************************************************************************************
 // time to calc it
 #define wait_time(time_)                       delay(time_);   
