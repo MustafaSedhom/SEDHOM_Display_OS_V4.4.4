@@ -2,16 +2,14 @@
 <br>
 is new version of my Library you can use any tft display and you can install it in arduino ide , platform io or you are embeeded engineer .<br>
 you can see most project i made with this library and arduino uno and tft 3.5 inch sheild as apicture and videos look this link in my Google Drive : 
- <a href "https://drive.google.com/drive/folders/16Hg8dgcBH3FalRkK8SDBWj2221bd8Fue?usp=sharing" target="_blank" > Mustafa SEDHOM Drive </a>  <br>
+ <a href "https://drive.google.com/drive/folders/16Hg8dgcBH3FalRkK8SDBWj2221bd8Fue?usp=sharing" target="_blank" > https://drive.google.com/drive/folders/16Hg8dgcBH3FalRkK8SDBWj2221bd8Fue?usp=sharing </a>  <br>
 
 ======================================================================================================================================================================
 ## about Writer this Library <br>
 ### Eng.Mustafa Sedhom (Embedded Software and Haedware Engineer) .<br>
 <br>
- Gmail : <a href "elmohandes24680@gmail.com" target="_blank" > Mustafa SEDHOM Gmail </a> <br>
- Telephone or WhatsApp : <a href "+201144962908"target="_blank" > Mustafa SEDHOM WhatsApp </a> <br>
- https://drive.google.com/drive/folders/16Hg8dgcBH3FalRkK8SDBWj2221bd8Fue?usp=sharing
- <br>
+ Gmail : <a href "elmohandes24680@gmail.com" target="_blank" > elmohandes24680@gmail.com </a> <br>
+ Telephone or WhatsApp : <a href "+201144962908"target="_blank" > +201144962908 </a> <br>
  
 ======================================================================================================================================================================
 ## why i made this lib ?<br>
