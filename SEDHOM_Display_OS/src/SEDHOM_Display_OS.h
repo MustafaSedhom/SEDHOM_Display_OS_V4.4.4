@@ -25,6 +25,8 @@
 #include "SEDHOM_Display_Fonts.h"
 // include arabic fonts file to use arabic fonts in your projects
 #include "SEDHOM_Arabic_Font.h"
+// include communications file to use communication protocols in your projects
+#include "SEDHOM_Comminucations.h"
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 class SEDHOM_Display_OS
 {
@@ -38,6 +40,7 @@ class SEDHOM_Display_OS
     SEDHOM_Time Time;
     SEDHOM_Pages Page;
     SEDHOM_Windows Window;
+    SEDHOM_Comminucations_UART call;
     // #define STACK_DATA_TYPE int // -> defualt
     Stack Stack;
     // #define Queue_DATA_TYPE int // -> defualt
