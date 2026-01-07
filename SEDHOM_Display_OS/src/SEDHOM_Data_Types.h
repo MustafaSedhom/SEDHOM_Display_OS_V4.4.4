@@ -14,6 +14,11 @@
 #define Rect             1
 #define Rectangle       Rect
 
+#define Fill_shape        1
+#define Draw_shape        0
+
+#define Show              1
+#define Hide              0
 
 #define on               ON
 #define off              OFF

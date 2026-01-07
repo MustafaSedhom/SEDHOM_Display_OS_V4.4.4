@@ -30,10 +30,13 @@ class SEDHOM_Icons
         void draw_Circle(int x,int y,int r,Color_t color);
         void fill_Triangle(int x0,int y0,int x1,int y1,int x2,int y2,Color_t color); 
         void draw_Triangle(int x0,int y0,int x1,int y1,int x2,int y2,Color_t color);
-        void fill_Right_Triangle(int x, int y, int h, int w, Color_t color);
-        void draw_Right_Triangle(int x, int y, int h, int w, Color_t color);
-        void fill_Equilateral_Triangle(int x, int y, int h, uint16_t color);
-        void draw_Equilateral_Triangle(int x, int y, int h, uint16_t color);
+
+        void Right_Triangle(int x, int y, int h, int w,bool fill_or_draw, Color_t color);
+        void Equilateral_Triangle_Up(int x, int y, int h,bool fill_or_draw, Color_t color);
+        void Equilateral_Triangle_Down(int x, int y, int h,bool fill_or_draw, Color_t color); 
+        void Equilateral_Triangle_Right(int x, int y, int h,bool fill_or_draw, Color_t color); 
+        void Equilateral_Triangle_Left(int x, int y, int h,bool fill_or_draw, Color_t color); 
+
         void TEXT(int x,int y,const GFXfont* font,Color_t color,string_t txt);
         void Container(int x,int y,int h,int w,int raduis,Color_t color);
         void fill_rectangle_with_end(int x,int y,int h,int w,int end_volume,Color_t color,Color_t end_color);
@@ -42,7 +45,7 @@ class SEDHOM_Icons
         // effects 
         Color_t Blur(int x,int y,int h,int w,int r,int Blur_value,Color_t mode,bool circle_or_rectangle = 1);
         // Draw SEDhOM Icons
-        void QRCode_Icon(int x,int y,int size,Color_t Background,Color_t ForeGround,int version,string_t content);
+        void QRCode_Icon(int x,int y,int size,int version,string_t content,Color_t color,Color_t Background);
         void WIFI_Icon(int x,int y,WIFI_STATUS_t state,Color_t color_on,Color_t color_off,Color_t Background);
         void Battary_Icon(int x,int y,int range,Color_t color,Color_t txt_color,Color_t Background,bool low_charge_red_color);
         void Home_Icon(int x,int y,Color_t color,Color_t Background);
@@ -75,6 +78,10 @@ class SEDHOM_Icons
         void Divider_vertical(int x,int y,int length , int thikness,Color_t color);
         void Divider_Horezontal(int x,int y,int length , int thikness,Color_t color);
         void ID_Card_Icon(int x,int y,Color_t color,Color_t main_font_color,Color_t font_color,Color_t image_background,bool default_image,bool eye,bool prof,char* name,char* unversity,char* department_1,char* department_2,char* Born,char* number,Color_t Background=0);
+        void Joy_Stick_Icon(int x,int y,int thumb_x,int thumb_y,int size,int thumb_size,Color_t color,Color_t OutLine,Color_t thumb,Color_t in ,Color_t Background=0);
+        void Temperature_Meter_Icon(int x,int y,int value,bool show_val_dashes,Color_t color,Color_t Outline,Color_t Background);
+
+
 };
 // define all functions and Draw all Widgets and icons
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -131,15 +138,12 @@ void SEDHOM_Icons::draw_Triangle(int x0,int y0,int x1,int y1,int x2,int y2,Color
 {
      Draw_Triangle(x0,y0,x1,y1,x2,y2,color);
 }  
-void SEDHOM_Icons::fill_Right_Triangle(int x, int y, int h, int w, Color_t color)
+void SEDHOM_Icons::Right_Triangle(int x, int y, int h, int w,bool fill_or_draw, Color_t color)
 {
-    Fill_Triangle(x, y, x, y + w, x + h, y + w, color);
+    if(fill_or_draw) {Fill_Triangle(x, y, x, y + w, x + h, y + w, color);}
+    else {Draw_Triangle(x, y, x, y + w, x + h, y + w, color);}
 }
-void SEDHOM_Icons::draw_Right_Triangle(int x, int y, int h, int w, Color_t color) 
-{
-    Draw_Triangle(x, y, x, y + w, x + h, y + w, color);
-}
-void SEDHOM_Icons::fill_Equilateral_Triangle(int x, int y, int h, uint16_t color) 
+void SEDHOM_Icons::Equilateral_Triangle_Up(int x, int y, int h,bool fill_or_draw, uint16_t color) 
 {
     float height = h * sqrt(3) / 2.0;
 
@@ -152,23 +156,58 @@ void SEDHOM_Icons::fill_Equilateral_Triangle(int x, int y, int h, uint16_t color
     int x_2 = x + h/2;        
     int y_2 = y + (1.0/3.0)*height;
 
-    fill_Triangle( x_0,  y_0,  x_1,  y_1,  x_2,  y_2, color);
+    if(fill_or_draw) fill_Triangle( x_0,  y_0,  x_1,  y_1,  x_2,  y_2, color);
+    else draw_Triangle( x_0,  y_0,  x_1,  y_1,  x_2,  y_2, color);
 }
-void SEDHOM_Icons::draw_Equilateral_Triangle(int x, int y, int h, uint16_t color) 
+void SEDHOM_Icons::Equilateral_Triangle_Down(int x, int y, int h,bool fill_or_draw, uint16_t color) 
 {
     float height = h * sqrt(3) / 2.0;
 
-    int x_0 = x;              
-    int y_0 = y - (2.0/3.0)*height;
+    int x_0 = x;               
+    int y_0 = y + (2.0/3.0)*height;  
 
     int x_1 = x - h/2;        
-    int y_1 = y + (1.0/3.0)*height;
+    int y_1 = y - (1.0/3.0)*height;  
 
     int x_2 = x + h/2;        
-    int y_2 = y + (1.0/3.0)*height;
+    int y_2 = y - (1.0/3.0)*height;  
 
-    draw_Triangle( x_0,  y_0,  x_1,  y_1,  x_2,  y_2, color);
+    if(fill_or_draw) fill_Triangle(x_0, y_0, x_1, y_1, x_2, y_2, color);
+    else draw_Triangle(x_0, y_0, x_1, y_1, x_2, y_2, color);
 }
+void SEDHOM_Icons::Equilateral_Triangle_Right(int x, int y, int h,bool fill_or_draw, uint16_t color)
+{
+    float height = h * sqrt(3) / 2.0;
+
+    int x_0 = x + (2.0/3.0)*h; 
+    int y_0 = y;
+
+    int x_1 = x - (1.0/3.0)*h; 
+    int y_1 = y - height/2;
+
+    int x_2 = x - (1.0/3.0)*h; 
+    int y_2 = y + height/2;
+
+    if(fill_or_draw) fill_Triangle(x_0, y_0, x_1, y_1, x_2, y_2, color);
+    else draw_Triangle(x_0, y_0, x_1, y_1, x_2, y_2, color);
+}
+void SEDHOM_Icons::Equilateral_Triangle_Left(int x, int y, int h,bool fill_or_draw, uint16_t color)
+{
+    float height = h * sqrt(3) / 2.0;
+
+    int x_0 = x - (2.0/3.0)*h; 
+    int y_0 = y;
+
+    int x_1 = x + (1.0/3.0)*h; 
+    int y_1 = y - height/2;
+
+    int x_2 = x + (1.0/3.0)*h;
+    int y_2 = y + height/2;
+
+    if(fill_or_draw) fill_Triangle(x_0, y_0, x_1, y_1, x_2, y_2, color);
+    else draw_Triangle(x_0, y_0, x_1, y_1, x_2, y_2, color);
+}
+
 void SEDHOM_Icons::TEXT(int x,int y,const GFXfont* font,Color_t color,string_t txt) 
 {
     Text(x,y,font,color,txt);
@@ -226,9 +265,10 @@ Color_t SEDHOM_Icons::Blur(int x,int y,int h,int w,int r,int Blur_value,Color_t 
   return color;
 }
 // icons and widgets
-void SEDHOM_Icons::QRCode_Icon(int x,int y,int size,Color_t Background,Color_t ForeGround,int version,string_t content)
+void SEDHOM_Icons::QRCode_Icon(int x,int y,int size,int version,string_t content,Color_t color,Color_t Background)
 {
-    SEDHOM_QRCode(x,y,size,Background,ForeGround,version,content);
+    SEDHOM_QRCode(x,y,size,Background,color,version,content);
+    
 }
 void SEDHOM_Icons::WIFI_Icon(int x,int y,WIFI_STATUS_t state,Color_t color_on,Color_t color_off,Color_t Background)
 {
@@ -672,8 +712,44 @@ void SEDHOM_Icons::ID_Card_Icon(int x,int y,Color_t color,Color_t main_font_colo
     Fill_Rectangle(x1+150,y1+155,120,45,15,color);
     Text(x1+157,y1+175,SmallFont,font_color,number);
 }
-
-
+void SEDHOM_Icons::Joy_Stick_Icon(int x,int y,int thumb_x,int thumb_y,int size,int thumb_size,Color_t color,Color_t OutLine,Color_t thumb,Color_t in ,Color_t Background=0)
+{
+  fill_Circle(x,y,size,OutLine);
+  fill_Circle(x,y,size-3,color);
+  Equilateral_Triangle_Up(x,y-35,10,Fill_shape,in);
+  Equilateral_Triangle_Down(x,y+35,10,Fill_shape,in);
+  Equilateral_Triangle_Right(x+35,y,10,Fill_shape,in);
+  Equilateral_Triangle_Left(x-35,y,10,Fill_shape,in);
+  int dx = thumb_x - x;
+  int dy = thumb_y - y;
+  if ((dx*dx + dy*dy) <= (size/2)*(size/2))
+  {
+      fill_Circle(thumb_x, thumb_y, thumb_size, thumb);
+  }
+}
+void SEDHOM_Icons::Temperature_Meter_Icon(int x,int y,int value,bool show_val_dashes,Color_t color,Color_t Outline,Color_t Background)
+{
+  Color_t color_dash =RED;
+  value = constrain(value, 0, 100);
+  fill_Circle(x+50/2,y+150+25,50,Outline);
+  fill_Rectangle(x,y,150,50,5,Outline);
+  fill_Rectangle(x+5,y+5,150,50-10,5,Background);
+  fill_Circle(x+50/2,y+150+25,50-5,Background);
+  fill_Circle(x+50/2,y+150+25,50-13,color);
+  int levelHeight = map(value, 0, 100, 0, 140);
+  fill_Rectangle(x+12,y + 150 - levelHeight,levelHeight,50-24,5,color);
+  if(show_val_dashes)
+  {
+   TEXT(x+55,y+10,FONT_BIG,red,"-100");
+    TEXT(x+55,y+135,FONT_BIG,Blue,"-0");
+    for (int i=0;i<=10; i++) 
+    {
+      if(i==3) color_dash = Orange;
+      else if(i==8) color_dash = blue;
+      TEXT(x+55,y+25+i*10,FONT_BIG,color_dash,"-");
+    }
+  }
+}
 
 
 

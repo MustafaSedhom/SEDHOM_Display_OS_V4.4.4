@@ -47,7 +47,7 @@
 #include <Fonts/FreeMonoBold9pt7b.h>    
 #include <Fonts/FreeMonoBold12pt7b.h>   
 #include <Fonts/FreeMonoBold18pt7b.h>   
-#include <Fonts/FreeMonoBold24pt7b.h>   
+#include <Fonts/FreeMonoBold24pt7b.h>  
 //=========================== FreeMonoOblique Family ==================
 #include <Fonts/FreeMonoOblique9pt7b.h>    
 #include <Fonts/FreeMonoOblique12pt7b.h>   
@@ -62,6 +62,8 @@
 // Dufualt small and Big Font
 #define SmallFont                 &FreeSmallFont
 #define BigFont                   &FreeBigFont
+#define FONT_SMALL                &FreeSmallFont
+#define FONT_BIG                  &FreeBigFont
 // SebenSegment
 #define FONT_SEVENSEGMENT         &FreeSevenSegNumFont
 // FreeSans

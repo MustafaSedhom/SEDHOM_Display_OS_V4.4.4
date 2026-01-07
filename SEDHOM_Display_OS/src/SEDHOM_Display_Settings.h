@@ -5,8 +5,11 @@
 //============================================================================================================================================
 // I use functions like
 // 1-> var = map(var,x0,y0,x1,y1);
-// 2-> var = sqrt(x);
-// 3-> sizeof(var);
+// 2-> var = constrain(var,x,y);
+// 3-> var = sqrt(x);
+// 4-> sizeof(var);
+// 5-> pinMode(pin,mode);
+// 6-> digitalWrite(pin,value);
 //*************************************************************************************************
 // include you lib driver here for TFT display
 //*************************************************************************************************
@@ -41,14 +44,15 @@ MCUFRIEND_kbv Display;
 // static Adafruit_TFTLCD Display(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 ///////////////////////////////////////////////////
 // for Qrcode lib
-QRCodeGFX qrcode(Display);
+#define init_Qr_code()  extern MCUFRIEND_kbv Display;static QRCodeGFX qrcode(Display);
 //////////////////////////////////////////////////
 // for touch
-#define YP A1  // must be an analog pin, use "An" notation!
+#define YP A3  // must be an analog pin, use "An" notation!
 #define XM A2  // must be an analog pin, use "An" notation!
-#define YM 7   // can be a digital pin
-#define XP 6   // can be a digital pin
-
+#define YM 9   // can be a digital pin
+#define XP 8   // can be a digital pin
+// touch screen dimentions
+const int TS_LEFT = 954, TS_RT = 88, TS_TOP = 908, TS_BOT = 125;
 #define MINPRESSURE 10
 #define MAXPRESSURE 1000
 ///////////////////////////////////////////////////
@@ -117,7 +121,6 @@ QRCodeGFX qrcode(Display);
 #define millis_func()                          millis();   
 #define milcros_func()                         micros();   
 //============================================================================================================================================
-/////////////////////////////init colors////////////////////////////
 //============================================================================================================================================
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #endif /*SEDHOM_DISPLAY_SETTING_H_*/

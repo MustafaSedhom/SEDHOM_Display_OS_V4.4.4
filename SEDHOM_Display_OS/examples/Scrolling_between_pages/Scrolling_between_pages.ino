@@ -7,12 +7,12 @@ void setup()
   OS.Init_Screen(Rotate_90_Degree,Dark_Mode);
   /////////////////////////////////////////////////////////////////////////////////////////////
   SEDHOM_List_of_pages = { Home_page , Switch_page , Setting_page , Wifi_page }; // takes any number of function name's
-  OS.handle_page.Handle_all_pages(SEDHOM_Handling_pages_paramters);
+  OS.Handle_page.Handle_all_pages(SEDHOM_Handling_pages_paramters);
 }
 void loop()
 {
-     if(OS.Touch.onTap(400,280,40,40)) OS.handle_page.push_page();
-     if(OS.Touch.onTap(20,30,50,50)) OS.handle_page.pop_page();
+     if(OS.Touch.onTap(400,280,40,40)) OS.Handle_page.push_page();
+     if(OS.Touch.onTap(20,30,50,50)) OS.Handle_page.pop_page();
 }
 void Home_page()
 {

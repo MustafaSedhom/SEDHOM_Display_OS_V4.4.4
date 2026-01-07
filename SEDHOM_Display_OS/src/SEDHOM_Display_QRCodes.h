@@ -2,13 +2,9 @@
 #define SEDHOM_DISPLAY_QRCODES_H_
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <QRCodeGFX.h>
 #include "SEDHOM_Display_Settings.h"
 
-// extern MCUFRIEND_kbv Display;
-
-// static QRCodeGFX qrcode(Display);
-extern QRCodeGFX qrcode;
+ init_Qr_code();
 
 #define SEDHOM_QRCode(x,y,size,Background,ForeGround,version,content)  \
                         SEDHOM_QRCode_Settings(Background,ForeGround,size,version);SEDHOM_QRCode_write(x,y,content);
@@ -17,7 +13,7 @@ extern QRCodeGFX qrcode;
 
 #define SEDHOM_QRCode_Settings(Background_Color,ForeGround,size,version) \
     qrcode.setScale(size).setColors(Background_Color, ForeGround).setRotation(QRCodeRotation::R0); \
-    qrcode.getGenerator().setErrorCorrectionLevel(QRCodeECCLevel::High).setVersion(version); 
+    qrcode.getGenerator().setErrorCorrectionLevel(/*QRCodeECCLevel::High*/ QRCodeECCLevel::Low).setVersion(version); 
     // from 1 to 20  // background, foreground // 0°, 90°, 180°, or 270° // force specific version
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #endif /*SEDHOM_DISPLAY_QRCODES_H_*/

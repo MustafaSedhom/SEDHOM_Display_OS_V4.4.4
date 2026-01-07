@@ -1,10 +1,10 @@
 #ifndef SEDHOM_DISPLAY_OS_H_
 #define SEDHOM_DISPLAY_OS_H_
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// include lib to Draw Basic shapes but i include it in Icons_And_Widgets file
-#include "SEDHOM_Display_Settings.h"
+// include data types file to make easy to change data types
+#include "SEDHOM_Data_Types.h"
 // include icons file to draw icon and widgets
-#include "SEDHOM_OS_Icons_And_Widgets.h"
+#include "SEDHOM_Icons_And_Widgets.h"
 // include touch file
 #include "SEDHOM_Display_Touch.h"
 // include SD Lib
@@ -15,25 +15,41 @@
 #include "SEDHOM_Data_Structure.h"
 // includew pages handlig file to handle user pages
 #include "SEDHOM_Handlig_pages.h"
+// include windows file to use sedhom_default_windows
+#include "SEDHOM_Windows.h"
+// include Page file to use sedhom_oadefualt_pages
+#include "SEDHOM_pages.h"
+// include colors file to use colors in your projects
+#include "SEDHOM_Colors.h"
+// include fonts file to use fonts in your projects
+#include "SEDHOM_Display_Fonts.h"
+// include arabic fonts file to use arabic fonts in your projects
+#include "SEDHOM_Arabic_Font.h"
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 class SEDHOM_Display_OS
 {
+  private:
+    // my name is Mustafa SEDHOM i wrote this lib to make easy way to use TFT Display in embedded projects
   public:
-  SEDHOM_SD_Card SD_Card;
-  SEDHOM_Icons Icon;
-  SEDHOM_Touch Touch;
-  SEDHOM_Handlig_Pages handle_page;
-  // #define STACK_DATA_TYPE int // -> defualt
-  Stack Stack;
-  // #define Queue_DATA_TYPE int // -> defualt
-  Queue queue;
-  void Init_Screen(ROTATION_STASTUS_t Rotate,Color_t Mode);
-  void Set_Device_Mode(Color_t Mode);
-  int Screen_Height();
-  int Screen_Width();
-  Color_t Mode();
-  Color_t Not_Mode();
-  void Fill_Screen(Color_t color);
+    SEDHOM_SD_Card SD_Card;
+    SEDHOM_Icons Icon;
+    SEDHOM_Touch Touch;
+    SEDHOM_Handlig_Pages Handle_page;
+    SEDHOM_Time Time;
+    SEDHOM_Pages Page;
+    SEDHOM_Windows Window;
+    // #define STACK_DATA_TYPE int // -> defualt
+    Stack Stack;
+    // #define Queue_DATA_TYPE int // -> defualt
+    Queue queue;
+    /// define all functions
+    void Init_Screen(ROTATION_STASTUS_t Rotate,Color_t Mode);
+    void Set_Device_Mode(Color_t Mode);
+    int Screen_Height();
+    int Screen_Width();
+    Color_t Mode();
+    Color_t Not_Mode();
+    void Fill_Screen(Color_t color);
 };
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // define all functions

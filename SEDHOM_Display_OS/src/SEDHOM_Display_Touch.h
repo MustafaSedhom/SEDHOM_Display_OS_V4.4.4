@@ -4,14 +4,7 @@
 
 #include "SEDHOM_Display_Settings.h"
 
-const int SEDHOM_XP =8 ,SEDHOM_XM = A2, SEDHOM_YP = A3,SEDHOM_YM = 9;
-// touch screen dimentions
-const int TS_LEFT = 954, TS_RT = 88, TS_TOP = 908, TS_BOT = 125;
-#define MINPRESSURE 200
-#define MAXPRESSURE 1000
-
-
-TouchScreen ts = TouchScreen(SEDHOM_XP, SEDHOM_YP, SEDHOM_XM, SEDHOM_YM, 300);
+TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //helper function
@@ -25,10 +18,10 @@ class SEDHOM_Touch
     {
       TSPoint p = ts.getPoint();
 
-      pinMode(SEDHOM_YP, OUTPUT);
-      pinMode(SEDHOM_XM, OUTPUT);
-      digitalWrite(SEDHOM_YP, HIGH);
-      digitalWrite(SEDHOM_XM, HIGH);
+      pinMode(YP, OUTPUT);
+      pinMode(XM, OUTPUT);
+      digitalWrite(YP, HIGH);
+      digitalWrite(XM, HIGH);
 
       bool pressed = (p.z > MINPRESSURE && p.z < MAXPRESSURE);
       if (pressed) {

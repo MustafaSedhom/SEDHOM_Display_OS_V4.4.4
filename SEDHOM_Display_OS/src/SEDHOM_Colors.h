@@ -38,7 +38,7 @@
 #define magenta     MAGENTA   
 #define yellow      YELLOW    
 #define white       WHITE     
-#define black       ORANGE      
+#define orange       ORANGE      
 #define greenyellow GREENYELLOW 
 #define pink        PINK 
 /////////////////////////////end colors//////////////////////////////
@@ -58,9 +58,29 @@
 #define Magenta     MAGENTA   
 #define Yellow      YELLOW    
 #define White       WHITE     
-#define Black       ORANGE      
+#define Orange       ORANGE      
 #define GreenYellow GREENYELLOW 
 #define Pink        PINK 
+/////////////////////////////end colors//////////////////////////////
+#define Color_Black       BLACK    
+#define Color_Navy        NAVY    
+#define Color_DarkGary    DARKGREEN   
+#define Color_DarkCyan    DARKCYAN  
+#define Color_Maroon      MAROON     
+#define Color_Purple      PURPLE    
+#define Color_Olive       OLIVE    
+#define Color_LightGrey   LIGHTGREY  
+#define Color_DarkGrey    DARKGREY   
+#define Color_Blue        BLUE       
+#define Color_Green       GREEN 
+#define Color_Cyan        CYAN      
+#define Color_Red         RED       
+#define Color_Magenta     MAGENTA   
+#define Color_Yellow      YELLOW    
+#define Color_White       WHITE     
+#define Color_Orange       ORANGE      
+#define Color_GreenYellow GREENYELLOW 
+#define Color_Pink        PINK 
 /////////////////////////////end colors//////////////////////////////
 //{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 #endif // !SEDHOM_COLORS
