@@ -20,6 +20,9 @@
 #define Show              1
 #define Hide              0
 
+#define yes               1
+#define no                0
+
 #define on               ON
 #define off              OFF
 #define byte_t         uint8_t

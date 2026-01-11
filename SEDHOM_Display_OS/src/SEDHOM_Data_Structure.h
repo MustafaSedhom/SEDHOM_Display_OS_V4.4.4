@@ -1,137 +1,156 @@
-#ifndef SEDHOM_DATA_STRUCTUR_H_
-#define SEDHOM_DATA_STRUCTUR_H_
-//...................................................................................................
-// Stack class
-#ifndef STACK_DATA_TYPE
-#define STACK_DATA_TYPE int
-#endif
+#ifndef SEDHOM_DATA_STRUCTURE_H_
+#define SEDHOM_DATA_STRUCTURE_H_
 
-typedef STACK_DATA_TYPE Stack_Data_Type;
+// ================================= STACK =================================
+template<typename T>
 class Stack
 {
-    private:
-        Stack_Data_Type* array;
-        int size;
-        int top;
+private:
+    T* array;
+    int size;
+    int top;
 
-    public:
-        Stack(){}
-        Stack(int Stack_size);
-        ~Stack();
-        void init_Stack(int size);
-        bool isEmpty();
-        bool isFull();
-        void push(Stack_Data_Type value);
-        Stack_Data_Type pop();
-        Stack_Data_Type peak();
+public:
+    Stack() : array(nullptr), size(0), top(-1) {}
+    Stack(int Stack_size);
+    ~Stack();
+
+    void init_Stack(int Stack_size);
+    bool isEmpty();
+    bool isFull();
+    void push(T value);
+    T pop();
+    T peek();
 };
-//========================================================================================
-// Stack functions
-Stack::Stack(int Stack_size)
+
+// -------- Stack implementation --------
+template<typename T>
+Stack<T>::Stack(int Stack_size)
 {
     size = Stack_size;
-    array = new Stack_Data_Type[size];
+    array = new T[size];
     top = -1;
 }
-Stack::~Stack()
+
+template<typename T>
+Stack<T>::~Stack()
 {
     delete[] array;
 }
-void Stack::init_Stack(int Stack_size)
+
+template<typename T>
+void Stack<T>::init_Stack(int Stack_size)
 {
+    delete[] array;
     size = Stack_size;
-    array = new Stack_Data_Type[size];
-    top = -1;   
+    array = new T[size];
+    top = -1;
 }
-void Stack::push(Stack_Data_Type value)
-{
-    if(isFull())return;
-    array[++top]=value;
 
-}
-Stack_Data_Type Stack::pop()
+template<typename T>
+bool Stack<T>::isEmpty()
 {
-    if(isEmpty())return(Stack_Data_Type());
-    Stack_Data_Type var = array[top];
-    top--;
-    return var;
+    return top == -1;
 }
-Stack_Data_Type Stack::peak()
-{
-    if(isEmpty()) return(Stack_Data_Type());
-    return (array[top]);
-}
-bool Stack::isEmpty()
-{
-    return(top == -1);
-}
-bool Stack::isFull()
-{
-    return(top == size-1);   
-}
-//...................................................................................................
 
-#ifndef Queue_DATA_TYPE
-#define Queue_DATA_TYPE int
-#endif
+template<typename T>
+bool Stack<T>::isFull()
+{
+    return top == size - 1;
+}
 
-typedef Queue_DATA_TYPE Queue_Data_Type;
+template<typename T>
+void Stack<T>::push(T value)
+{
+    if (isFull()) return;
+    array[++top] = value;
+}
 
+template<typename T>
+T Stack<T>::pop()
+{
+    if (isEmpty()) return T();
+    return array[top--];
+}
+
+template<typename T>
+T Stack<T>::peek()
+{
+    if (isEmpty()) return T();
+    return array[top];
+}
+
+// ================================= QUEUE =================================
+template<typename T>
 class Queue
 {
-    private:
-        Queue_Data_Type* array;
-        int size;
-        int front;
-        int rear;
-        int count;  
-    public:
-        Queue(){}
-        Queue(int Queue_size);
-        ~Queue();
-        void init_Queue(int Queue_size);
-        bool enqueue(Queue_Data_Type value);
-        bool dequeue(Queue_Data_Type &value);
-        bool isEmpty() { return count == 0; }
-        bool isFull() { return count == size; }
-        int getCount() { return count; }
+private:
+    T* array;
+    int size;
+    int front;
+    int rear;
+    int count;
+
+public:
+    Queue() : array(nullptr), size(0), front(0), rear(-1), count(0) {}
+    Queue(int Queue_size);
+    ~Queue();
+
+    void init_Queue(int Queue_size);
+    bool enqueue(T value);
+    T dequeue();
+
+    bool isEmpty() { return count == 0; }
+    bool isFull() { return count == size; }
+    int getCount() { return count; }
 };
 
-Queue::Queue(int Queue_size)
+// -------- Queue implementation --------
+template<typename T>
+Queue<T>::Queue(int Queue_size)
 {
     size = Queue_size;
-    array = new Queue_Data_Type[size];
+    array = new T[size];
     front = 0;
     rear = -1;
     count = 0;
 }
 
-Queue::~Queue()
+template<typename T>
+Queue<T>::~Queue()
 {
     delete[] array;
 }
-void Queue::init_Queue(int Queue_size)
+
+template<typename T>
+void Queue<T>::init_Queue(int Queue_size)
 {
+    delete[] array;
     size = Queue_size;
-    array = new Queue_Data_Type[size];
+    array = new T[size];
     front = 0;
     rear = -1;
     count = 0;
 }
-bool Queue::enqueue(Queue_Data_Type value)
+
+template<typename T>
+bool Queue<T>::enqueue(T value)
 {
-    if(isFull()) return false;
+    if (isFull()) return false;
     rear = (rear + 1) % size;
     array[rear] = value;
     count++;
     return true;
 }
-bool Queue::dequeue(Queue_Data_Type &value)
+
+template<typename T>
+T Queue<T>::dequeue()
 {
-    if(isEmpty()) return false;
-    value = array[front];
+    if (isEmpty()) return T();
+    T value = array[front];
     front = (front + 1) % size;
     count--;
-    return true;
+    return value;
 }
-#endif // !SEDHOM_DATA_STRUCTUR_H_ 
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#endif

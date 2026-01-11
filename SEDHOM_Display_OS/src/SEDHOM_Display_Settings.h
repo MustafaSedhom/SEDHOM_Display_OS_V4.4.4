@@ -36,6 +36,7 @@
 //*************************************************************************************************
 // static UTFTGLUE Display(0,A2,A1,A3,A4,A0); 
 MCUFRIEND_kbv Display;
+#define init_Display_variable()      extern MCUFRIEND_kbv Display;
 // #define LCD_CS A3 // Chip Select goes to Analog 3
 // #define LCD_CD A2 // Command/Data goes to Analog 2
 // #define LCD_WR A1 // LCD Write goes to Analog 1

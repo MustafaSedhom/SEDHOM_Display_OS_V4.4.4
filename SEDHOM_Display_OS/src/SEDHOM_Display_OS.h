@@ -41,10 +41,10 @@ class SEDHOM_Display_OS
     SEDHOM_Pages Page;
     SEDHOM_Windows Window;
     SEDHOM_Comminucations_UART call;
-    // #define STACK_DATA_TYPE int // -> defualt
-    Stack Stack;
-    // #define Queue_DATA_TYPE int // -> defualt
-    Queue queue;
+    // STACK_DATA_TYPE int // -> defualt
+    Stack<int> Stack;
+    // Queue_DATA_TYPE int // -> defualt
+    Queue<int> Queue;
     /// define all functions
     void Init_Screen(ROTATION_STASTUS_t Rotate,Color_t Mode);
     void Set_Device_Mode(Color_t Mode);

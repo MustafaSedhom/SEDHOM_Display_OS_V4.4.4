@@ -13,7 +13,7 @@ private:
     int current_page = -1;
     int pages_number = 0;
     void (**pages)(void) = nullptr;
-    Stack page;
+    Stack<int> page;
 
 public:
     SEDHOM_Handlig_Pages() : page(MAX_PAGES) {}
@@ -50,7 +50,7 @@ public:
         if (!page.isEmpty())
         {
             page.pop();
-            current_page = page.isEmpty() ? 1 : page.peak();
+            current_page = page.isEmpty() ? 1 : page.peek();
             show_current_page();
         }
     }

@@ -6,7 +6,7 @@
 #include "SEDHOM_Display_QRCodes.h"
 ///////////////////////////////////////////////////////////////////////////
 
-extern MCUFRIEND_kbv Display ;
+init_Display_variable();
 
 ///////////////////////////////////////////////////////////////////////////
 // Icons class
@@ -80,6 +80,14 @@ class SEDHOM_Icons
         void ID_Card_Icon(int x,int y,Color_t color,Color_t main_font_color,Color_t font_color,Color_t image_background,bool default_image,bool eye,bool prof,char* name,char* unversity,char* department_1,char* department_2,char* Born,char* number,Color_t Background=0);
         void Joy_Stick_Icon(int x,int y,int thumb_x,int thumb_y,int size,int thumb_size,Color_t color,Color_t OutLine,Color_t thumb,Color_t in ,Color_t Background=0);
         void Temperature_Meter_Icon(int x,int y,int value,bool show_val_dashes,Color_t color,Color_t Outline,Color_t Background);
+        void Tone_Icon(int x,int y,bool is_muted_or_not,Color_t color,Color_t Background);
+        void Sound_value_Icon(int x,int y,int value,Color_t color,Color_t thikness_color,Color_t Background,bool thikness_or_not=0);
+        void Video_Icon(int x,int y,Color_t color,Color_t Background);
+        void Block_Icon(int x,int y,bool open_or_closed,Color_t color,Color_t Background);
+
+
+
+
 
 
 };
@@ -207,7 +215,6 @@ void SEDHOM_Icons::Equilateral_Triangle_Left(int x, int y, int h,bool fill_or_dr
     if(fill_or_draw) fill_Triangle(x_0, y_0, x_1, y_1, x_2, y_2, color);
     else draw_Triangle(x_0, y_0, x_1, y_1, x_2, y_2, color);
 }
-
 void SEDHOM_Icons::TEXT(int x,int y,const GFXfont* font,Color_t color,string_t txt) 
 {
     Text(x,y,font,color,txt);
@@ -247,7 +254,6 @@ void SEDHOM_Icons::Draw_Custom_int_shap(int x,int y,int h,int w,int color,int ar
     }
   }
 }
-
 // effects
 Color_t SEDHOM_Icons::Blur(int x,int y,int h,int w,int r,int Blur_value,Color_t mode,bool circle_or_rectangle = 1)
 {
@@ -750,6 +756,55 @@ void SEDHOM_Icons::Temperature_Meter_Icon(int x,int y,int value,bool show_val_da
     }
   }
 }
+void SEDHOM_Icons::Tone_Icon(int x,int y,bool is_muted_or_not,Color_t color,Color_t Background)
+{
+   fill_Circle(x,y,5,color);
+   fill_Circle(x,y,5-2,Background);
+   fill_Circle(x+20,y,5,color);
+   fill_Circle(x+20,y,5-2,Background);
+   fill_Rectangle(x+4,y-20,20,2,0,color);
+   fill_Rectangle(x+4+20,y-20,20,2,0,color);
+   fill_Rectangle(x+4,y-20,2,20,0,color);
+   if(is_muted_or_not)
+   {   
+     draw_Line(x-5,y-20,x+32,y-5,color);    
+     draw_Line(x-5,y-20+1,x+32,y-5+1,color);    
+   }
+}
+void SEDHOM_Icons::Sound_value_Icon(int x,int y,int value,Color_t color,Color_t thikness_color,Color_t Background,bool thikness_or_not=0)
+{
+  int val = value;
+  value = constrain(value,0,100);
+  value = map(value,0,100,150,0);
+  fill_Rectangle(x,y,150,50,40,thikness_or_not?thikness_color:color);
+  fill_Rectangle(x+5,y+5,150-10,50-10,40,Background);
+  fill_Rectangle(x+5,(y+value+5),((val<15)?(0):(150-value-10)),50-10,40,color);
+  Tone_Icon(65,180,(val==0)?true:false,(val<20)?color:Background,(val<20)?Background:color);
+}
+void SEDHOM_Icons::Video_Icon(int x,int y,Color_t color,Color_t Background)
+{
+   fill_Rectangle(x,y,35,50,8,color);
+   Equilateral_Triangle_Right(x+24,y+17,20,Fill_shape,Background);
+}
+void SEDHOM_Icons::Block_Icon(int x,int y,bool open_or_closed,Color_t color,Color_t Background)
+{
+  if(!open_or_closed)
+  {
+    fill_Rectangle(x+21,y-15,30,20,10,color);
+     fill_Rectangle(x+21+2,y-15+2,30-4,20-4,10,Background);
+     fill_Rectangle(x+26,y,20,26,2,Background);
+  }
+  else
+  {
+     fill_Rectangle(x+3,y-15,30,20,10,color);
+     fill_Rectangle(x+3+2,y-15+2,30-4,20-4,10,Background);
+  }
+  fill_Rectangle(x,y,20,26,2,color);
+  fill_Circle(x+12,y+6,4,Background);
+  fill_Rectangle(x+10,y+9,8,5,2,Background);
+}
+
+
 
 
 
