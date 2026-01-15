@@ -44,6 +44,7 @@ class SEDHOM_Icons
         void Draw_Custom_Char(int x,int y,int h,int w,int color,char arr[]);
         // effects 
         Color_t Blur(int x,int y,int h,int w,int r,int Blur_value,Color_t mode,bool circle_or_rectangle = 1);
+        Color_t Color_Blur(int x,int y,int h,int w,int r,Color_t color,Color_t mode,bool circle_or_rectangle = 1);
         // Draw SEDhOM Icons
         void QRCode_Icon(int x,int y,int size,int version,string_t content,Color_t color,Color_t Background);
         void WIFI_Icon(int x,int y,WIFI_STATUS_t state,Color_t color_on,Color_t color_off,Color_t Background);
@@ -260,6 +261,18 @@ Color_t SEDHOM_Icons::Blur(int x,int y,int h,int w,int r,int Blur_value,Color_t 
   Color_t color_value = map(Blur_value,mode?20:0,mode?0:20,0,255);
 
   Color_t color = set_Color(color_value,color_value,color_value);
+  if(circle_or_rectangle)
+  {
+    fill_Rectangle(x,y,h,w,r,color);
+  }
+  else
+  {
+    fill_Circle(x,y,r,color);
+  }
+  return color;
+}
+Color_t SEDHOM_Icons::Color_Blur(int x,int y,int h,int w,int r,Color_t color,Color_t mode,bool circle_or_rectangle = 1)
+{
   if(circle_or_rectangle)
   {
     fill_Rectangle(x,y,h,w,r,color);

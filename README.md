@@ -20,6 +20,96 @@ by ***Eng.Mustafa Sedhom*** Embedded Software and Hardware Engineer
 
 is new version of my Library you can use any tft display and you can install it in arduino ide , platform io or you are embeeded engineer .
 you can see most project i made with this library and arduino uno and tft 3.5 inch sheild as apicture and videos look this link in my Google Drive : &ensp; [images and videos link ](https://drive.google.com/drive/folders/16Hg8dgcBH3FalRkK8SDBWj2221bd8Fue?usp=sharing)
+
+
+# ===============
+**show example**
+![Blur effect image](images/Blur_page_image.jpeg)
+![Blur effect image](images/Blur_and_color_text.jpeg)
+![color effect image](images/blur_color_page.jpeg)
+
+[videao link](images/page_1_video.mp4)
+
+<video width="600" controls>
+  <source src="images/page_1_video.mp4" type="video/mp4">
+</video>
+
+-  code of video and picture
+
+```cpp
+//=======================================================================================
+// include OS lib from SEDHOM company
+// Eng.Mustafa Sedhom
+#include <SEDHOM_Display_OS.h>
+// object from library
+SEDHOM_Display_OS OS;
+// page var
+Color_t is_selected[][2] =
+{
+  {0,GREEN},
+  {0,BLUE},
+  {0,Magenta},
+  {0,RED}
+};
+// var for touch
+int last_x,last_y;
+void setup()
+{
+  OS.Init_Screen(Rotate_90_Degree,Night_Mode);
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+  Desgin_Page_1();
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+}
+void loop() 
+{
+   if(OS.Touch.Is_Presssed())
+   {
+      int x = OS.Touch.get_X_point();
+      int y = OS.Touch.get_Y_point();
+      if(x != last_x || y != last_y)
+      {
+        ////////////////////////
+        if(OS.Touch.onTap(20,10,120,200))   { is_selected[0][0] = ! is_selected[0][0]; Desgin_Page_1(); } 
+        if(OS.Touch.onTap(260,10,120,200))  { is_selected[1][0] = ! is_selected[1][0]; Desgin_Page_1(); } 
+        if(OS.Touch.onTap(20,170,120,200))  { is_selected[2][0] = ! is_selected[2][0]; Desgin_Page_1(); } 
+        if(OS.Touch.onTap(260,170,120,200)) { is_selected[3][0] = ! is_selected[3][0]; Desgin_Page_1(); } 
+        ////////////////////////
+        last_x = x;
+        last_y = y;
+      }
+   }
+  //  OS.Time.Stop_Display(100); // micro seconds
+}
+void Desgin_Page_1()
+{
+  // Page Settings
+  #define Blur_effect_value       2
+  #define Icons_color             OS.Not_Mode() 
+  #define Icons_TXT_color         OS.Not_Mode() 
+  #define Second_TXT_color        OS.Not_Mode() 
+  
+  // Setting Widgets
+  OS.Icon.Setting_Icon(70,40,Icons_color,is_selected[0][0] ? OS.Icon.Color_Blur(20,10,120,200,20,is_selected[0][1],OS.Mode()) : OS.Icon.Blur(20,10,120,200,20,Blur_effect_value,OS.Mode()));
+  OS.Icon.TEXT(100,40,FONT_FREEMONOBOLD_MEDIUM,Icons_TXT_color,"Setting");
+  OS.Icon.TEXT(80,103,FONT_FREEMONOBOLD_SMALL,Second_TXT_color,"System");
+
+  // WIFI Widgets
+  OS.Icon.WIFI_Icon(300,50,WIFI_Status_conected_level_4_full,Icons_color,0,is_selected[1][0] ? OS.Icon.Color_Blur(260,10,120,200,20,is_selected[1][1],OS.Mode()) : OS.Icon.Blur(260,10,120,200,20,Blur_effect_value,OS.Mode()));
+  OS.Icon.TEXT(380,50,FONT_FREEMONOBOLD_MEDIUM,Icons_TXT_color,"WIFI");
+  OS.Icon.TEXT(310,103,FONT_FREEMONOBOLD_SMALL,Second_TXT_color,"Connected");
+
+  // BLE Widgets
+  OS.Icon.Bluetooth_Icon(55,190,BLuetooth_Status_open_and_not_connected,Icons_color,is_selected[2][0] ? OS.Icon.Color_Blur(20,170,120,200,20,is_selected[2][1],OS.Mode()) : OS.Icon.Blur(20,170,120,200,20,Blur_effect_value,OS.Mode()));
+  OS.Icon.TEXT(100,210,FONT_FREEMONOBOLD_MEDIUM,Icons_TXT_color,"Blutooth");
+  OS.Icon.TEXT(50,270,FONT_FREEMONOBOLD_SMALL,Second_TXT_color,"DisConnected");
+
+  // Home Widgets
+  OS.Icon.Home_Icon(270,185,Icons_color,is_selected[3][0] ? OS.Icon.Color_Blur(260,170,120,200,20,is_selected[3][1],OS.Mode()) : OS.Icon.Blur(260,170,120,200,20,Blur_effect_value,OS.Mode()));
+  OS.Icon.TEXT(380,210,FONT_FREEMONOBOLD_MEDIUM,Icons_TXT_color,"Home");
+  OS.Icon.TEXT(345,270,FONT_FREEMONOBOLD_SMALL,Second_TXT_color,"GUI");
+}
+```
+
 #
 ## **about this version**
 - **last version :** &emsp; ![last version](https://img.shields.io/badge/Version-3.5.1-red)
@@ -46,9 +136,9 @@ you can see most project i made with this library and arduino uno and tft 3.5 in
 
   Gmail : **elmohandes24680@gmail.com**
 
-  WhatsApp : **+201144962908**
+  linkedIn : **[Mustafa Sedhom](https://www.linkedin.com/in/mustafa-sedhom-bb2551322)**
 
-  linkedIn : **[linkedin.com/in/mustafa-sedhom-bb2551322](linkedin.com/in/mustafa-sedhom-bb2551322)**
+  WhatsApp : **+201144962908**
 #
 ## **properites of Library**
 - Icon <- for drawing icons and shapes and effects and text and fonts for text 
@@ -122,7 +212,8 @@ you can see most project i made with this library and arduino uno and tft 3.5 in
         void Sound_value_Icon(int x,int y,int value,Color_t color,Color_t thikness_color,Color_t Background,bool thikness_or_not=0);
         void Video_Icon(int x,int y,Color_t color,Color_t Background);
         void Block_Icon(int x,int y,bool open_or_closed,Color_t color,Color_t Background);
-        ```
+
+    ```
 
 - Touch <- handling all touch mehods and output function name-> 
     - onTap(x,y,h,w)->bool <- detect touch return true or false and take rectangle space for detect it  .
@@ -132,12 +223,12 @@ you can see most project i made with this library and arduino uno and tft 3.5 in
     - get_y_Point()-> int <- return y coordenates for y touch place .
     - get_Z_Point()-> int <- return preesed value  .
     ``` Cpp
-    bool Is_Presssed();
-    int get_X_point();
-    int get_Y_point();
-    int get_Z_point();
-    bool onTap(int x, int y, int w, int h);
-    void onTap(int x, int y, int w, int h,void (*Do_Function)());
+      bool Is_Presssed();
+      int get_X_point();
+      int get_Y_point();
+      int get_Z_point();
+      bool onTap(int x, int y, int w, int h);
+      void onTap(int x, int y, int w, int h,void (*Do_Function)());
     ```
 - SD_Card <- handling all function to dealing betwwen sdcard and mcu
     - read() , write() , ... like sd lib do exactly .
@@ -148,11 +239,11 @@ you can see most project i made with this library and arduino uno and tft 3.5 in
     - push_page()-> void <- show next page .
     - pop_page()-> void <- show reveres page .
     ```cpp
-    // input SEDHOM_Handling_pages_paramters instead of void (*pages_array[])(void), int size
-    void Handle_all_pages(void (*pages_array[])(void), int size);
-    void goto_page(int number);
-    void push_page();
-    void pop_page();
+      // input SEDHOM_Handling_pages_paramters instead of void (*pages_array[])(void), int size
+      void Handle_all_pages(void (*pages_array[])(void), int size);
+      void goto_page(int number);
+      void push_page();
+      void pop_page();
     ```
 
 #
