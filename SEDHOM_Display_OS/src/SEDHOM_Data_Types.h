@@ -63,6 +63,16 @@ typedef enum Switch
     ON
 }SWITCH_STATUS_t;
 
+typedef enum 
+{
+  Signal_Status_Off,
+  Signal_Status_No_Signal,
+  Signal_Status_Signal_level_1,
+  Signal_Status_Signal_level_2,
+  Signal_Status_Signal_level_3,
+  Signal_Status_Signal_level_4,
+  Signal_Status_Signal_level_5_full,
+}SIGNAL_STATUS_t;
 
 ///////////////////////////////////////////////////////////////////////////
 // data type of Id icon

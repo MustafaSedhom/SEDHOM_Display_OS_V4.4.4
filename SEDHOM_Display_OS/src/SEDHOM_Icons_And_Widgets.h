@@ -85,8 +85,8 @@ class SEDHOM_Icons
         void Sound_value_Icon(int x,int y,int value,Color_t color,Color_t thikness_color,Color_t Background,bool thikness_or_not=0);
         void Video_Icon(int x,int y,Color_t color,Color_t Background);
         void Block_Icon(int x,int y,bool open_or_closed,Color_t color,Color_t Background);
-
-
+        void Signal_Icon(int x,int y,SIGNAL_STATUS_t state,Color_t color_on,Color_t color_off,Color_t Background);
+        void Bell_Icon(int x,int y,bool mute_or_not,bool filled_or_not,Color_t color,Color_t Background);
 
 
 
@@ -816,8 +816,91 @@ void SEDHOM_Icons::Block_Icon(int x,int y,bool open_or_closed,Color_t color,Colo
   fill_Circle(x+12,y+6,4,Background);
   fill_Rectangle(x+10,y+9,8,5,2,Background);
 }
+void SEDHOM_Icons::Signal_Icon(int x,int y,SIGNAL_STATUS_t state,Color_t color_on,Color_t color_off,Color_t Background)
+{
+  Color_t color_one,color_two,color_three,color_four,color_five;
 
+  if (state == Signal_Status_No_Signal)
+  {
+      color_one = color_off;
+     color_two = color_off;
+     color_three = color_off;
+     color_four = color_off;
+     color_five = color_off;
+  }
+  else if(state == Signal_Status_Signal_level_1)
+  {
+     color_one = color_on;
+     color_two = color_off;
+     color_three = color_off;
+     color_four = color_off;
+     color_five = color_off;
+  }
+  else if(state == Signal_Status_Signal_level_2)
+  {
+    color_one = color_on;
+    color_two = color_on;
+    color_three = color_off;
+    color_four = color_off;
+    color_five = color_off;
+  }
+  else if(state == Signal_Status_Signal_level_3)
+  {
+    color_one = color_on;
+    color_two = color_on;
+    color_three = color_on;
+    color_four = color_off;
+    color_five = color_off;
+  }
+  else if(state == Signal_Status_Signal_level_4)
+  {
+    color_one = color_on;
+    color_two = color_on;
+    color_three = color_on;
+    color_four = color_on;
+    color_five = color_off;
+  }
+  else if(state == Signal_Status_Signal_level_5_full)
+  {
+    color_one = color_on;
+    color_two = color_on;
+    color_three = color_on;
+    color_four = color_on;
+    color_five = color_on;
+  }
+  else return ;
 
+  fill_Rectangle(x,y+20,5,5,0,color_one);
+  fill_Rectangle(x+10,y+15,10,5,0,color_two);
+  fill_Rectangle(x+20,y+10,15,5,0,color_three);
+  fill_Rectangle(x+30,y+5,20,5,0,color_four);
+  fill_Rectangle(x+40,y,25,5,0,color_five);
+}
+
+void SEDHOM_Icons::Bell_Icon(int x,int y,bool mute_or_not,bool filled_or_not,Color_t color,Color_t Background)
+{
+   fill_Rectangle(x-3,y+20,5,30-4,4,color);
+   fill_Rectangle(x-5,y+23,5,30,4,color);
+   fill_Rectangle(x-7,y+26,5,30+4,4,color);
+   fill_Rectangle(x,y,30,20,10,color);
+   fill_Circle(x+10,y+32,5,color);
+   if(filled_or_not)
+   {
+      fill_Rectangle(x-3+2,y+20+2,5-1,30-4-4,4,Background);
+      fill_Rectangle(x-5+2,y+23+2,5-1,30-4,4,Background);
+      fill_Rectangle(x-7+2,y+26+2,5-4,30+4-4,4,Background);
+      fill_Rectangle(x+2,y+2,30-4,20-4,10,Background);
+   }
+   if(!mute_or_not)
+   {
+     draw_Line(x-10,y+3,x+35,y+28,Background);
+     draw_Line(x-10,y+4,x+35,y+29,Background);
+     draw_Line(x-10,y+5,x+35,y+30,GREEN);
+     draw_Line(x-10,y+6,x+35,y+31,GREEN);
+     draw_Line(x-10,y+7,x+35,y+32,Background);
+     draw_Line(x-10,y+8,x+35,y+33,Background);
+   }
+}
 
 
 

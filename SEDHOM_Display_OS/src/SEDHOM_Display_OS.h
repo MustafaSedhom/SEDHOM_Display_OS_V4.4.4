@@ -60,6 +60,7 @@ void SEDHOM_Display_OS::Init_Screen(ROTATION_STASTUS_t Rotate,Color_t Mode)
 {
   init_Screen(Rotate);
   Icon.Set_Mode(Mode);
+  Window.set_windows_mode(Mode);
 }
 void SEDHOM_Display_OS::Set_Device_Mode(Color_t Mode)
 {
