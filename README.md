@@ -141,6 +141,71 @@ void Desgin_Page_1()
   WhatsApp : **+201144962908**
 #
 ## **properites of Library**
+- fonts you can use it in text functions in icon class 
+- ```Cpp
+  // Dufualt small and Big Font
+  #define SmallFont                 
+  #define BigFont                   
+  #define FONT_SMALL                
+  #define FONT_BIG                  
+  // SebenSegment
+  #define FONT_SEVENSEGMENT         
+  // FreeSans
+  #define FONT_FREESANS_SMALL       
+  #define FONT_FREESANS_MEDIUM      
+  #define FONT_FREESANS_BIG         
+  #define FONT_FREESANS_VERYBIG     
+  // FreeSansBold
+  #define FONT_FREESANSBOLD_SMALL       
+  #define FONT_FREESANSBOLD_MEDIUM      
+  #define FONT_FREESANSBOLD_BIG         
+  #define FONT_FREESANSBOLD_VERYBIG     
+  // FreeSansOblique
+  #define FONT_FREESANSOBLIQUE_SMALL       
+  #define FONT_FREESANSOBLIQUE_MEDIUM      
+  #define FONT_FREESANSOBLIQUE_BIG         
+  #define FONT_FREESANSOBLIQUE_VERYBIG     
+  // FreeSerif
+  #define FONT_FREESERIF_SMALL       
+  #define FONT_FREESERIF_MEDIUM      
+  #define FONT_FREESERIF_BIG         
+  #define FONT_FREESERIF_VERYBIG     
+  // FreeSerifBold
+  #define FONT_FREESERIFBOLD_SMALL       
+  #define FONT_FREESERIFBOLD_MEDIUM      
+  #define FONT_FREESERIFBOLD_BIG         
+  #define FONT_FREESERIFBOLD_VERYBIG     
+  // FreeSerifItalic
+  #define FONT_FREESERIFITALIC_SMALL       
+  #define FONT_FREESERIFITALIC_MEDIUM      
+  #define FONT_FREESERIFITALIC_BIG         
+  #define FONT_FREESERIFITALIC_VERYBIG     
+  // FreeSerifBoldItalic
+  #define FONT_FREESERIFBOLDITALIC_SMALL       
+  #define FONT_FREESERIFBOLDITALIC_MEDIUM      
+  #define FONT_FREESERIFBOLDITALIC_BIG         
+  #define FONT_FREESERIFBOLDITALIC_VERYBIG     
+  // FreeMono
+  #define FONT_FREEMONO_SMALL       
+  #define FONT_FREEMONO_MEDIUM      
+  #define FONT_FREEMONO_BIG         
+  #define FONT_FREEMONO_VERYBIG     
+  // FreeMonoBold
+  #define FONT_FREEMONOBOLD_SMALL       
+  #define FONT_FREEMONOBOLD_MEDIUM      
+  #define FONT_FREEMONOBOLD_BIG         
+  #define FONT_FREEMONOBOLD_VERYBIG     
+  // FreeMonoOblique
+  #define FONT_FREEMONOOBLIQUE_SMALL       
+  #define FONT_FREEMONOOBLIQUE_MEDIUM      
+  #define FONT_FREEMONOOBLIQUE_BIG         
+  #define FONT_FREEMONOOBLIQUE_VERYBIG     
+  // FreeMonoBoldOblique
+  #define FONT_FREEMONOBOLDOBLIQUE_SMALL       
+  #define FONT_FREEMONOBOLDOBLIQUE_MEDIUM      
+  #define FONT_FREEMONOBOLDOBLIQUE_BIG         
+  #define FONT_FREEMONOBOLDOBLIQUE_VERYBIG     
+  ```
 - Icon <- for drawing icons and shapes and effects and text and fonts for text 
     ```Cpp
         // to set and handling mode
